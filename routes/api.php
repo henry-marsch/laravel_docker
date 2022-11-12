@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/v1/flights', [FlightController::class, 'store']);
+
 Route::get('/v1/flights', [FlightController::class, 'index']);

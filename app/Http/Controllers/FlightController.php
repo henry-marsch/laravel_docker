@@ -35,7 +35,22 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'airline_iata' => 'required|string|max:2',
+            'flight_number' => 'required|integer',
+            'from_code' => 'required|string|max:3',
+            'to_code' => 'required|string|max:3',
+            'departure_date_utc' => 'required|date|max:255'
+        ]);
+
+        $flight = new Flight($request->all());
+        $flight->save();
+        
+        //Flight::store($request->all());
+        return new Response($flight);
+        //var_dump($flight);
+        //var_dump($request->getContent());
+        //var_dump($request->all());
     }
 
     /**
