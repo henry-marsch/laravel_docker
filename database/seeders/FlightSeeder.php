@@ -15,7 +15,6 @@ class FlightSeeder extends Seeder
     public function run()
     {
         DB::table('flights')->insert([
-            'id' => 'bacbb338-5d01-471b-b5ea-a483a043c57a',
             'airline_iata' => 'FR',
             'flight_number' => 1024,
             'from_code' => 'OTP',
@@ -24,7 +23,6 @@ class FlightSeeder extends Seeder
         ]);
 
         DB::table('flights')->insert([
-            'id' => 'bacbb338-5d01-471b-b5ea-a483a043c57b',
             'airline_iata' => 'SE',
             'flight_number' => 2048,
             'from_code' => 'OTP',
@@ -33,7 +31,6 @@ class FlightSeeder extends Seeder
         ]);
 
         DB::table('flights')->insert([
-            'id' => 'bacbb338-5d01-471b-b5ea-a483a043c57c',
             'airline_iata' => 'DK',
             'flight_number' => 4096,
             'from_code' => 'OTP',

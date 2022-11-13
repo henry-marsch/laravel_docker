@@ -44,13 +44,10 @@ class FlightController extends Controller
         ]);
 
         $flight = new Flight($request->all());
-        $flight->save();
         
-        //Flight::store($request->all());
-        return new Response($flight);
-        //var_dump($flight);
-        //var_dump($request->getContent());
-        //var_dump($request->all());
+        $flight->save();
+
+        return $flight->fresh();
     }
 
     /**
@@ -84,7 +81,23 @@ class FlightController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'airline_iata' => 'required|string|max:2',
+            'flight_number' => 'required|integer',
+            'from_code' => 'required|string|max:3',
+            'to_code' => 'required|string|max:3',
+            'departure_date_utc' => 'required|date|max:255'
+        ]);
+
+        Flight::where('id', $id)->update([
+            'airline_iata'=> $request->input('airline_iata'),
+            'flight_number'=> $request->input('flight_number'),
+            'from_code'=> $request->input('from_code'),
+            'to_code'=> $request->input('to_code'),
+            'departure_date_utc'=> $request->input('departure_date_utc')
+        ]);
+
+        return Flight::find($id);
     }
 
     /**

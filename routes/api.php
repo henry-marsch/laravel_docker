@@ -22,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/v1/flights', [FlightController::class, 'store']);
 
 Route::get('/v1/flights', [FlightController::class, 'index']);
+
+Route::put('/v1/flights/{id}', [FlightController::class, 'update']);
